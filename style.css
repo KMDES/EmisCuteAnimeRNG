@@ -1,0 +1,115 @@
+:root {
+    --buttonMarginBottom, 15px; 
+}
+
+
+body {
+        background-color: #e4b554;
+        background-image: url("pictures/smug-freiren-1.png");
+        background-repeat: no-repeat;
+        background-position-x: right;
+    }
+    .CuteAnimeRNG {
+        margin: auto;
+        width: 50%;
+        border: 3px solid yellow;
+        padding: 10px;
+    }
+    .InstructionText {
+        margin: auto;
+        width: 75%;
+        text-align: center;
+        font-size: xx-large;
+        background-image: linear-gradient(to right, rebeccapurple, dodgerblue, limegreen, red);
+        background-clip: text;
+        -webkit-text-stroke-color: linear-gradient(to right, violet, dodgerblue, chartreuse, red);
+        -webkit-text-stroke-width: medium;
+        color: transparent;
+        animation: rainbow_animation 6s linear infinite;
+        background-size: 400% 100%;
+    }
+
+    @keyframes rainbow_animation {
+        0%, 100% {
+            background-position: 0 0;
+        }
+
+        50% {
+            background-position: 100% 0;
+        }
+    }
+    
+    .ClearTextButton {
+        margin: auto;
+        display: flex;
+        align-items: center;
+        width: 25%;
+        border: 3px solid black;
+        text-align: center;
+        margin-bottom: 15px;
+    }
+    
+    .GenerateButton {
+        margin: auto;
+        display: flex;
+        align-items: center;
+        width: 25%;
+        border: 3px solid black;
+        text-align: center;
+        margin-bottom: 15px;
+    }
+    
+    .MinimumTextField {
+        margin: auto;
+        display: flex;
+        align-items: self-start;
+        width: 15%;
+        border: 1px solid black;
+        text-align: center;
+    }
+    
+    .MaximumTextField {
+        margin: auto;
+        display: flex;
+        align-items: self-end;
+        width: 15%;
+        border: 1px solid black;
+        text-align: center;
+        margin-bottom: 15px;
+    }
+    
+    .DisplayNumber {
+        margin: auto;
+        display: flex;
+        align-items: self-end;
+        width: 15%;
+        border: 1px solid black;
+        text-align: center;
+        margin-bottom: 15px;
+    }
+    
+    .RandomNumberCopyButton {
+        margin: auto;
+        display: flex;
+        align-items: center;
+        width: 20%;
+        border: 3px solid black;
+        text-align: center;
+        margin-bottom: 15px;
+    }
+    
+    .NotifyCopied {
+        margin: auto;
+        display: flex;
+        align-items: center;
+        width: 20%;
+        border: 3px solid black;
+        text-align: center;
+        margin-bottom: 15px;
+    }
+    
+    .Dance {
+        margin: auto;
+        display: flex;
+        align-items: center;
+    }
