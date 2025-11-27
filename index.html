@@ -28,19 +28,21 @@
         dance.src = "pictures/frieren-dance-1.gif";
     };
     
+    function populateElements(element, id, className, innerHTML){
+        element.id = id;
+        element.className = className;
+        element.innerHTML = innerHTML;
+    }
+    
     function createClearTextButton() {
-        clearTextButton.id = "clearTextButton";
-        clearTextButton.className = "ClearTextButton";
-        clearTextButton.innerHTML = "Clear Text Fields";
+        populateElements(clearTextButton, "clearTextButton", "ClearTextButton", "Clear Text Fields")
         clearTextButton.addEventListener('click', function () {
             clearTextField("minTextField", "maxTextField");
         });
     }
     
     function createGenerateButton() {
-        generateButton.id = "generateButton";
-        generateButton.className = "GenerateButton";
-        generateButton.innerHTML = "Generate Cute Anime Random Number";
+        populateElements(generateButton, "generateButton", "GenerateButton", "Generate Cute Anime Random Number")
         generateButton.addEventListener("click", function () {
             generateRandomNumber();
         });
@@ -65,7 +67,7 @@
     }
 
     function getRandomInt(min, max) {
-        return Math.floor(Math.random() * (max - min + 1));
+        return Math.floor(Math.random() * (max - min + 1) + min);
     }
 
     function clearTextField(field1, field2){
@@ -82,7 +84,7 @@
         var convertMaxToInt = parseInt(document.getElementById("maxTextField").value);
         notifyCopied.innerHTML = "";
         if ((!isNaN(convertMinToInt)) && (!isNaN(convertMaxToInt))) {
-            generatedRandomNumberValue = getRandomInt(document.getElementById("minTextField").value, document.getElementById("maxTextField").value);
+            generatedRandomNumberValue = getRandomInt(parseInt(document.getElementById("minTextField").value), parseInt(document.getElementById("maxTextField").value));
             displayRandomNumber(generatedRandomNumberValue);
             createRandomNumberCopyButton();
         }
@@ -93,16 +95,12 @@
     }
     
     function displayRandomNumber(value) {
-        displayNumber.id = "DisplayNumber";
-        displayNumber.className = "DisplayNumber";
-        displayNumber.innerHTML = (generatedRandomNumberValue);
+        populateElements(displayNumber, "DisplayNumber", "DisplayNumber", (generatedRandomNumberValue))
         addDancingGif();
     }
     
     function createRandomNumberCopyButton() {
-        randomNumberCopyButton.id = "randomNumberCopyButton";
-        randomNumberCopyButton.className = "RandomNumberCopyButton";
-        randomNumberCopyButton.innerHTML = "Click Here To Copy Random Number";
+        populateElements(randomNumberCopyButton, "randomNumberCopyButton", "RandomNumberCopyButton", "Click Here To Copy Random Number");
         randomNumberCopyButton.addEventListener("click", function () {
             CopyRandomNumber();
         });
@@ -117,9 +115,7 @@
     }
     
     function notifierNumberCopied() {
-        notifyCopied.id = "NotifyCopied";
-        notifyCopied.className = "NotifyCopied";
-        notifyCopied.innerHTML = ("Copied the Cute Anime Random Number: " + generatedRandomNumberValue);
+        populateElements(notifyCopied, "NotifyCopied", "NotifyCopied", ("Copied the Cute Anime Random Number: " + generatedRandomNumberValue));
     }
     
     function addDancingGif(){
