@@ -35,14 +35,14 @@
     }
     
     function createClearTextButton() {
-        populateElements(clearTextButton, "clearTextButton", "ClearTextButton", "Clear Text Fields")
+        populateElements(clearTextButton, "clearTextButton", "ClearTextButton", "Clear Text Fields");
         clearTextButton.addEventListener('click', function () {
             clearTextField("minTextField", "maxTextField");
         });
     }
     
     function createGenerateButton() {
-        populateElements(generateButton, "generateButton", "GenerateButton", "Generate Cute Anime Random Number")
+        populateElements(generateButton, "generateButton", "GenerateButton", "Generate Cute Anime Random Number");
         generateButton.addEventListener("click", function () {
             generateRandomNumber();
         });
@@ -95,7 +95,7 @@
     }
     
     function displayRandomNumber(value) {
-        populateElements(displayNumber, "DisplayNumber", "DisplayNumber", (generatedRandomNumberValue))
+        populateElements(displayNumber, "DisplayNumber", "DisplayNumber", (generatedRandomNumberValue));
         addDancingGif();
     }
     
