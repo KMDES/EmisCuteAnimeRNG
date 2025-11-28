@@ -88,6 +88,7 @@
         var convertMaxToInt = parseInt(document.getElementById("maxTextField").value);
         var convertGenerateTotalToInt = parseInt(document.getElementById("generateTotalTextField").value);
         notifyCopied.innerHTML = "";
+        generatedNumberArray = [];
         
         if ((!isNaN(convertMinToInt)) && (!isNaN(convertMaxToInt)) && (!isNaN(convertGenerateTotalToInt))) {
             if (convertGenerateTotalToInt < convertMaxToInt) {
@@ -148,7 +149,7 @@
         }
     }
     
-    //TODO: Crashes if totalAmountOfGeneratedNumbers ia greater than or equla to maxTextField
+    //TODO: If total generate number is generated, and then a lower total number is generated, the older numbers above the threshold don't go away
     function populateGeneratedNumbersArray (){
         var tempNumber;
         for (var i = 0; i < totalAmountOfGeneratedNumbers; i++) {
@@ -170,6 +171,8 @@
                 textFieldHolder = textFieldHolder + generatedNumberArray[i] +  ", ";
                 generatedNumbersTextField.innerHTML = textFieldHolder;
             }
+        var tempString = generatedNumbersTextField.innerHTML;
+        generatedNumbersTextField.innerHTML = tempString.substring(0, tempString.length - 2);
         }
         
     function dupeNumberChecker(){
