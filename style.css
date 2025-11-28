@@ -62,7 +62,7 @@ body {
     .MinimumTextField {
         margin: auto;
         display: flex;
-        align-items: self-start;
+        align-items: center;
         width: 15%;
         border: 1px solid black;
         text-align: center;
@@ -71,7 +71,7 @@ body {
     .MaximumTextField {
         margin: auto;
         display: flex;
-        align-items: self-end;
+        align-items: center;
         width: 15%;
         border: 1px solid black;
         text-align: center;
@@ -81,7 +81,7 @@ body {
     .GenerateTotalTextField{
         margin: auto;
         display: flex;
-        align-items: self-end;
+        align-items: center;
         width: 15%;
         border: 1px solid black;
         text-align: center;
@@ -91,7 +91,7 @@ body {
     .DisplayNumber {
         margin: auto;
         display: flex;
-        align-items: self-end;
+        align-items: center;
         width: 15%;
         border: 1px solid black;
         text-align: center;
