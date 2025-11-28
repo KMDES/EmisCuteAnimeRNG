@@ -5,7 +5,7 @@
     var maxTextField = document.body.appendChild(document.createElement("input"));
     var generateTotalTextField = document.body.appendChild(document.createElement("input"));
     var generateButton = document.body.appendChild(document.createElement('button'));
-    var displayNumber = document.body.appendChild(document.createElement('button'));
+    //var displayNumber = document.body.appendChild(document.createElement('button'));
     var randomNumberCopyButton = document.body.appendChild(document.createElement('button'));
     var notifyCopied = document.body.appendChild(document.createElement('button'));
     var generatedNumbersTextField = document.body.appendChild(document.createElement("div"));
@@ -94,8 +94,9 @@
                 //generatedRandomNumberValue = getRandomInt(parseInt(document.getElementById("minTextField").value), parseInt(document.getElementById("maxTextField").value));
                 totalAmountOfGeneratedNumbers = parseInt(document.getElementById("generateTotalTextField").value);
                 populateGeneratedNumbersArray();
-                displayRandomNumber(generatedRandomNumberValue);
+                //displayRandomNumber(generatedRandomNumberValue);
                 createRandomNumberCopyButton();
+                addDancingGif();
             }
             else{
                 generateTotalTextField.value = "Total amount of Numbers must be less than Max Number.";
@@ -114,13 +115,13 @@
         return generatedRandomNumberValue;
     }
     
-    function displayRandomNumber(value) {
-        populateElements(displayNumber, "DisplayNumber", "DisplayNumber", (generatedRandomNumberValue));
-        addDancingGif();
-    }
+    //function displayRandomNumber(value) {
+    //    populateElements(displayNumber, "DisplayNumber", "DisplayNumber", (generatedRandomNumberValue));
+    //    addDancingGif();
+    //}
     
     function createRandomNumberCopyButton() {
-        populateElements(randomNumberCopyButton, "randomNumberCopyButton", "RandomNumberCopyButton", "Click Here To Copy Random Number");
+        populateElements(randomNumberCopyButton, "randomNumberCopyButton", "RandomNumberCopyButton", "Click Here To Copy The Cute Anime Random Number List");
         randomNumberCopyButton.addEventListener("click", function () {
             CopyRandomNumber();
         });
@@ -130,12 +131,12 @@
         //Below 2 lines for Mobile if needed?
         //generatedRandomNumberValue.select();
         //generatedRandomNumberValue.setSelectionRange(0, 99999);
-        navigator.clipboard.writeText(generatedRandomNumberValue);
+        navigator.clipboard.writeText(generatedNumbersTextField.innerHTML);
         notifierNumberCopied();
     }
     
     function notifierNumberCopied() {
-        populateElements(notifyCopied, "NotifyCopied", "NotifyCopied", ("Copied the Cute Anime Random Number: " + generatedRandomNumberValue));
+        populateElements(notifyCopied, "NotifyCopied", "NotifyCopied", ("Copied the Cute Anime Random Number list!"));
     }
     
     function addDancingGif(){
