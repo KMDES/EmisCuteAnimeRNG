@@ -100,6 +100,9 @@
                 generateTotalTextField.value = "Total amount of Numbers must be less than Max Number.";
             }
         }
+        else if(document.getElementById("generateTotalTextField").value === "Evan"){
+                generateTotalTextField.value = "I am not a number Emi! D:<"; 
+            }    
         else if(isNaN(convertGenerateTotalToInt)){
                 generateTotalTextField.value = "This needs to be a real number Emi!"; 
             }
