@@ -96,11 +96,13 @@
                 createRandomNumberCopyButton();
                 addDancingGif();
             }
-            
             else{
                 generateTotalTextField.value = "Total amount of Numbers must be less than Max Number.";
             }
         }
+        else if(isNaN(convertGenerateTotalToInt)){
+                generateTotalTextField.value = "This needs to be a real number Emi!"; 
+            }
         
         if ((isNaN(convertMinToInt)) || (isNaN(convertMaxToInt))) {
             document.getElementById("minTextField").value = "We need real numbers here Emi!";
