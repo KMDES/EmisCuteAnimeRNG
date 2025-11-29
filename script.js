@@ -1,14 +1,13 @@
 //Javascript for Emi's Cute Anime Random Number Generator
-
+    //TODO: Put generated number list at the top. 
+    var generatedNumbersTextField = document.body.appendChild(document.createElement("div"));
     var clearTextButton = document.body.appendChild(document.createElement('button'));
     var minTextField = document.body.appendChild(document.createElement("input"));
     var maxTextField = document.body.appendChild(document.createElement("input"));
     var generateTotalTextField = document.body.appendChild(document.createElement("input"));
     var generateButton = document.body.appendChild(document.createElement('button'));
-    //var displayNumber = document.body.appendChild(document.createElement('button'));
     var randomNumberCopyButton = document.body.appendChild(document.createElement('button'));
     var notifyCopied = document.body.appendChild(document.createElement('button'));
-    var generatedNumbersTextField = document.body.appendChild(document.createElement("div"));
     
     var dance = document.createElement("img");
     var generatedRandomNumberValue;
@@ -62,7 +61,6 @@
         populateTextFields(generateTotalTextField, "generateTotalTextField", "GenerateTotalTextField", "How many numbers do you want Emi?");
         populateTextFields(generatedNumbersTextField, "generatedNumbersTextField", "GeneratedNumbersTextField", "Total Numbers Generated Will Be Displayed Here.");
         generatedNumbersTextField.innerHTML = "Total Numbers Generated Will Be Displayed Here.";
-        
     }
 
     function getRandomInt(min, max) {
@@ -91,18 +89,17 @@
         generatedNumberArray = [];
         
         if ((!isNaN(convertMinToInt)) && (!isNaN(convertMaxToInt)) && (!isNaN(convertGenerateTotalToInt))) {
+            
             if (convertGenerateTotalToInt < convertMaxToInt) {
-                //generatedRandomNumberValue = getRandomInt(parseInt(document.getElementById("minTextField").value), parseInt(document.getElementById("maxTextField").value));
                 totalAmountOfGeneratedNumbers = parseInt(document.getElementById("generateTotalTextField").value);
                 populateGeneratedNumbersArray();
-                //displayRandomNumber(generatedRandomNumberValue);
                 createRandomNumberCopyButton();
                 addDancingGif();
             }
+            
             else{
                 generateTotalTextField.value = "Total amount of Numbers must be less than Max Number.";
             }
-
         }
         
         if ((isNaN(convertMinToInt)) || (isNaN(convertMaxToInt))) {
@@ -115,11 +112,6 @@
         generatedRandomNumberValue = getRandomInt(parseInt(document.getElementById("minTextField").value), parseInt(document.getElementById("maxTextField").value));
         return generatedRandomNumberValue;
     }
-    
-    //function displayRandomNumber(value) {
-    //    populateElements(displayNumber, "DisplayNumber", "DisplayNumber", (generatedRandomNumberValue));
-    //    addDancingGif();
-    //}
     
     function createRandomNumberCopyButton() {
         populateElements(randomNumberCopyButton, "randomNumberCopyButton", "RandomNumberCopyButton", "Click Here To Copy The Cute Anime Random Number List");
@@ -149,34 +141,34 @@
         }
     }
     
-    //TODO: If total generate number is generated, and then a lower total number is generated, the older numbers above the threshold don't go away
     function populateGeneratedNumbersArray (){
         var tempNumber;
+        
         for (var i = 0; i < totalAmountOfGeneratedNumbers; i++) {
             tempNumber = generateRandomNumber();
             if (!generatedNumberArray.includes(tempNumber)) {
                     generatedNumberArray[i] = tempNumber;
                 }
+                
             else{
                     i--;
                 }
             }   
+            
         displayAllNumberGenerated();    
         }    
             
     function displayAllNumberGenerated(){
-        generatedNumberArray.sort(function(a, b){return a - b;});   
+        generatedNumberArray.sort(function(a, b){return a - b;});
         var textFieldHolder = "";
+        
         for (var i = 0; i < generatedNumberArray.length; i++) {
                 textFieldHolder = textFieldHolder + generatedNumberArray[i] +  ", ";
                 generatedNumbersTextField.innerHTML = textFieldHolder;
             }
-        var tempString = generatedNumbersTextField.innerHTML;
-        generatedNumbersTextField.innerHTML = tempString.substring(0, tempString.length - 2);
+        trimEndOfList();    
         }
         
-    function dupeNumberChecker(){
-        
-    }    
-    
-
+    function trimEndOfList(){
+        generatedNumbersTextField.innerHTML = generatedNumbersTextField.innerHTML.substring(0, generatedNumbersTextField.innerHTML.length - 2);
+    }
