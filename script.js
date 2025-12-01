@@ -6,19 +6,26 @@
     var maxTextField = document.body.appendChild(document.createElement("input"));
     var generateTotalTextField = document.body.appendChild(document.createElement("input"));
     var generateButton = document.body.appendChild(document.createElement('button'));
-    var randomNumberCopyButton = document.body.appendChild(document.createElement('button'));
+    var randomNumberCopyButton = document.body.appendChild(document.createElement('button'));    var darkMode;
     var notifyCopied = document.body.appendChild(document.createElement('button'));
     
     var dance = document.createElement("img");
+    var darkModeIcon = document.createElement("img");
+    var darkModeState = true;
     var generatedRandomNumberValue;
     var generatedNumberArray = [];
     var totalAmountOfGeneratedNumbers;
+    
+    const body = document.body;
+    var darkModeButton = document.getElementById('darkModeIcon');
     
     window.onload = function () {
         makeTextField();
         createClearTextButton();
         createGenerateButton();
         dance.src = "pictures/frieren-dance-1.gif";
+        darkModeIcon.src = "pictures/dark-mode.png";
+        addDarkMode();
     };
     
     function populateElements(element, id, className, innerHTML){
@@ -100,9 +107,11 @@
                 generateTotalTextField.value = "Total amount of Numbers must be less than Max Number.";
             }
         }
+        
         else if(document.getElementById("generateTotalTextField").value === "Evan"){
                 generateTotalTextField.value = "I am not a number Emi! D:<"; 
             }    
+            
         else if(isNaN(convertGenerateTotalToInt)){
                 generateTotalTextField.value = "This needs to be a real number Emi!"; 
             }
@@ -177,3 +186,26 @@
     function trimEndOfList(){
         generatedNumbersTextField.innerHTML = generatedNumbersTextField.innerHTML.substring(0, generatedNumbersTextField.innerHTML.length - 2);
     }
+    
+    function addDarkMode (){
+        darkModeIcon.id = "darkModeIcon";
+        darkModeIcon.className = "DarkModeIcon";
+        document.body.appendChild(darkModeIcon);
+        darkModeButton = document.getElementById('darkModeIcon');
+        darkModeToggler();
+    }
+    
+    function darkModeToggler(){
+        darkModeButton.addEventListener('click', () => {
+            body.classList.toggle('DarkMode');
+            darkModeState = !darkModeState;
+            
+            if (darkModeState === false){
+                darkModeIcon.src = "pictures/light-mode.png";
+            }
+            
+            else{
+                darkModeIcon.src = "pictures/dark-mode.png";
+            }
+        });
+   }
