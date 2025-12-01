@@ -205,6 +205,7 @@
             }
             
             else{
+                
                 darkModeIcon.src = "pictures/dark-mode.png";
             }
         });
