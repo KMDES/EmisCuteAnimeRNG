@@ -5,30 +5,24 @@
 //TODO: see if can clear memory after generating
 //TODO: Add website icon
 
-//DONE: Make top numbers generated field pop up after everything's generated
-//DONE: Remove clear text fields
-//DONE: Rounded button's borders and added darkred colour to border
-//DONE: Make input fields double larger font (use css var), taller (use css var), just little bit wider
-
-    var generatedNumbersTextField = document.body.appendChild(document.createElement("div"));
+    const generatedNumbersTextField = document.body.appendChild(document.createElement("div"));
     //var clearTextButton = document.body.appendChild(document.createElement('button'));
-    var minTextField = document.body.appendChild(document.createElement("input"));
-    var maxTextField = document.body.appendChild(document.createElement("input"));
-    var generateTotalTextField = document.body.appendChild(document.createElement("input"));
-    var generateButton = document.body.appendChild(document.createElement('button'));
-    var randomNumberCopyButton = document.body.appendChild(document.createElement('button'));
-    var notifyCopied = document.body.appendChild(document.createElement('button'));
+    const minTextField = document.body.appendChild(document.createElement("input"));
+    const maxTextField = document.body.appendChild(document.createElement("input"));
+    const generateTotalTextField = document.body.appendChild(document.createElement("input"));
+    const generateButton = document.body.appendChild(document.createElement('button'));
+    const randomNumberCopyButton = document.body.appendChild(document.createElement('button'));
+    const notifyCopied = document.body.appendChild(document.createElement('button'));
     
     //var darkMode;
-    var dance = document.createElement("img");
-    var darkModeIcon = document.createElement("img");
+    const dance = document.createElement("img");
+    const darkModeIcon = document.createElement("img");
     var darkModeState = true;
-    var generatedRandomNumberValue;
     var generatedNumberArray = [];
     var totalAmountOfGeneratedNumbers;
     
     const body = document.body;
-    var darkModeButton = document.getElementById('darkModeIcon');
+    const darkModeButton = document.getElementById('darkModeIcon');
     
     window.onload = function () {
         makeTextField();
@@ -100,9 +94,9 @@
     }
     
     function acceptConfigRandomNumbers() {
-        var convertMinToInt = parseInt(document.getElementById("minTextField").value);
-        var convertMaxToInt = parseInt(document.getElementById("maxTextField").value);
-        var convertGenerateTotalToInt = parseInt(document.getElementById("generateTotalTextField").value);
+        let convertMinToInt = parseInt(document.getElementById("minTextField").value);
+        let convertMaxToInt = parseInt(document.getElementById("maxTextField").value);
+        let convertGenerateTotalToInt = parseInt(document.getElementById("generateTotalTextField").value);
         notifyCopied.innerHTML = "";
         generatedNumberArray = [];
         
@@ -134,6 +128,7 @@
     }
     
     function generateRandomNumber(){
+        let generatedRandomNumberValue;
         generatedRandomNumberValue = getRandomInt(parseInt(document.getElementById("minTextField").value), parseInt(document.getElementById("maxTextField").value));
         return generatedRandomNumberValue;
     }
@@ -155,7 +150,7 @@
     }
     
     function addDancingGif(){
-        var addDance;
+        let addDance;
         if (!addDance) {
             dance.id = "Dance";
             dance.className = "Dance";
@@ -164,27 +159,42 @@
     }
     
     function populateGeneratedNumbersArray (){
-        var tempNumber;
+        let tempNumber;
+        let startTime = Date.now();
+        let currentTime;
+        let timeUntilRunAwayBreak = 4000;
         
-        for (var i = 0; i < totalAmountOfGeneratedNumbers; i++) {
+        for (let i = 0; i < totalAmountOfGeneratedNumbers; i++) {
+            
             tempNumber = generateRandomNumber();
+            
             if (!generatedNumberArray.includes(tempNumber)) {
                     generatedNumberArray[i] = tempNumber;
-                }
-                
+                    currentTime = Date.now();
+                } 
+                    
             else{
                     i--;
+                    currentTime = Date.now();
                 }
-            }   
+                
+            if (currentTime > (startTime + timeUntilRunAwayBreak)) {
+                    i = totalAmountOfGeneratedNumbers;
+                    console.log("BREAKING!!");
+                    generatedNumberArray = [];
+                    generatedNumbersTextField.innerHTML = "Tried generating too many numbers at once. Operation canceled to avoid browser crash.  ";
+                    break;
+                }     
+            }
             
         displayAllNumberGenerated();    
         }    
             
     function displayAllNumberGenerated(){
         generatedNumberArray.sort(function(a, b){return a - b;});
-        var textFieldHolder = "";
+        let textFieldHolder = "";
         
-        for (var i = 0; i < generatedNumberArray.length; i++) {
+        for (let i = 0; i < generatedNumberArray.length; i++) {
                 textFieldHolder = textFieldHolder + generatedNumberArray[i] +  ", ";
                 generatedNumbersTextField.innerHTML = textFieldHolder;
             }
