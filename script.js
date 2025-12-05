@@ -1,14 +1,25 @@
 //Javascript for Emi's Cute Anime Random Number Generator
-    //TODO: Put generated number list at the top. 
+
+
+//TODO: If generation is taking too long add a for loop break (say generation took too long) Eats up a huge amount of memory
+//TODO: see if can clear memory after generating
+//TODO: Add website icon
+
+//DONE: Make top numbers generated field pop up after everything's generated
+//DONE: Remove clear text fields
+//DONE: Rounded button's borders and added darkred colour to border
+//DONE: Make input fields double larger font (use css var), taller (use css var), just little bit wider
+
     var generatedNumbersTextField = document.body.appendChild(document.createElement("div"));
-    var clearTextButton = document.body.appendChild(document.createElement('button'));
+    //var clearTextButton = document.body.appendChild(document.createElement('button'));
     var minTextField = document.body.appendChild(document.createElement("input"));
     var maxTextField = document.body.appendChild(document.createElement("input"));
     var generateTotalTextField = document.body.appendChild(document.createElement("input"));
     var generateButton = document.body.appendChild(document.createElement('button'));
-    var randomNumberCopyButton = document.body.appendChild(document.createElement('button'));    var darkMode;
+    var randomNumberCopyButton = document.body.appendChild(document.createElement('button'));
     var notifyCopied = document.body.appendChild(document.createElement('button'));
     
+    //var darkMode;
     var dance = document.createElement("img");
     var darkModeIcon = document.createElement("img");
     var darkModeState = true;
@@ -21,7 +32,7 @@
     
     window.onload = function () {
         makeTextField();
-        createClearTextButton();
+        //createClearTextButton();
         createGenerateButton();
         dance.src = "pictures/frieren-dance-1.gif";
         darkModeIcon.src = "pictures/dark-mode.png";
@@ -43,14 +54,14 @@
         });
     }
     
-    function createClearTextButton() {
+    /*function createClearTextButton() {
         populateElements(clearTextButton, "clearTextButton", "ClearTextButton", "Clear Text Fields");
         clearTextButton.addEventListener('click', function () {
             clearTextField("minTextField");
             clearTextField("maxTextField");
             clearTextField("generateTotalTextField");
         });
-    }
+    }*/
     
     function createGenerateButton() {
         populateElements(generateButton, "generateButton", "GenerateButton", "Generate Cute Anime Random Number List");
@@ -66,8 +77,8 @@
         populateTextFields(minTextField, "minTextField", "MinimumTextField", "Minimum number Emi!");
         populateTextFields(maxTextField, "maxTextField", "MaximumTextField", "Maximum number Emi!");
         populateTextFields(generateTotalTextField, "generateTotalTextField", "GenerateTotalTextField", "How many numbers do you want Emi?");
-        populateTextFields(generatedNumbersTextField, "generatedNumbersTextField", "GeneratedNumbersTextField", "Total Numbers Generated Will Be Displayed Here.");
-        generatedNumbersTextField.innerHTML = "Total Numbers Generated Will Be Displayed Here.";
+        //populateTextFields(generatedNumbersTextField, "generatedNumbersTextField", "GeneratedNumbersTextField", "Total Numbers Generated Will Be Displayed Here.");
+        populateTextFields(generatedNumbersTextField, "generatedNumbersTextField", "GeneratedNumbersTextField", "");
     }
 
     function getRandomInt(min, max) {
@@ -135,9 +146,6 @@
     }
 
     function CopyRandomNumber() {
-        //Below 2 lines for Mobile if needed?
-        //generatedRandomNumberValue.select();
-        //generatedRandomNumberValue.setSelectionRange(0, 99999);
         navigator.clipboard.writeText(generatedNumbersTextField.innerHTML);
         notifierNumberCopied();
     }
